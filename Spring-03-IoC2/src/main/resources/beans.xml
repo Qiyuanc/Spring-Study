@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--通过有参构造器参数的下标设置-->
+    <!--<bean id="user" class="com.qiyuan.entity.User">
+        <constructor-arg index="0" value="Qiyuanc"/>
+    </bean>-->
+
+    <!--通过有参构造器参数的类型设置-->
+    <!--<bean id="user" class="com.qiyuan.entity.User">
+        <constructor-arg type="java.lang.String" value="Qiyuanc2"/>
+    </bean>-->
+
+    <!--通过有参构造器参数的名称设置-->
+    <bean id="user" class="com.qiyuan.entity.User" name="qiyuanUser qiyuanUser2,qiyuanUser3;qiyuanUser4">
+        <constructor-arg name="name" value="Qiyuanc3"/>
+    </bean>
+
+    <!--给对象设置个别名，通过这个别名也可以获取到对象-->
+    <alias name="user" alias="qiyuan"/>
+
+</beans>

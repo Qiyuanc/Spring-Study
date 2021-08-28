@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解支持-->
+    <context:annotation-config/>
+
+    <!--没有属性需要设置-->
+    <!--用一下 p 命名空间！-->
+    <!--<bean id="cat" class="Cat"/>
+    <bean id="dog" class="Dog"/>
+    <bean id="person" class="Person" p:name="祈鸢" autowire="byName"/>-->
+
+
+    <!--<bean class="Cat"/>
+    <bean class="Dog"/>
+    <bean id="person" class="Person" p:name="祈鸢" autowire="byType"/>-->
+
+    <!--使用注解自动装配-->
+    <!--对于 cat，使用的是 byName-->
+    <!--对于 dog，使用的是 byName-->
+    <!--<bean id="cat" class="Cat"/>
+    <bean id="cat2" class="Cat"/>
+
+    <bean id="dog" class="Dog"/>
+    <bean id="person" class="Person" p:name="祈鸢"/>-->
+
+    <!-- @Qualifier寻找对象-->
+    <bean id="cat1" class="Cat"/>
+    <bean id="cat2" class="Cat"/>
+    <bean id="dog1" class="Dog"/>
+    <bean id="dog2" class="Dog"/>
+    <bean id="person" class="Person" p:name="祈鸢"/>
+
+
+</beans>

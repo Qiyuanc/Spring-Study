@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--把对象交给 Spring 管理-->
+    <bean id="DefaultImpl" class="com.qiyuan.dao.UserDaoImpl"/>
+    <bean id="MysqlImpl" class="com.qiyuan.dao.UserDaoMysqlImpl"/>
+    <bean id="OracleImpl" class="com.qiyuan.dao.UserDaoOracleImpl"/>
+
+    <bean id="userService" class="com.qiyuan.service.UserServiceImpl">
+        <!-- value: 基本数据类型 || ref: Spring 中管理的对象 -->
+        <property name="userDao" ref="DefaultImpl"/>
+    </bean>
+
+</beans>

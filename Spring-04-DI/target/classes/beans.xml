@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="Address">
+        <property name="address" value="家"/>
+    </bean>
+
+    <bean id="student" class="Student">
+        <!--基本类型注入，value-->
+        <property name="name" value="祈鸢"/>
+        <!-- bean 注入，ref-->
+        <property name="address" ref="address"/>
+        <!--数组注入，array + value/ref -->
+        <property name="books">
+            <array>
+                <!--如果是其他类型，就使用 ref-->
+                <value>三体</value>
+                <value>龙族</value>
+                <!--<ref></ref>-->
+            </array>
+        </property>
+        <!-- List 注入，list + value/ref -->
+        <property name="hobbies">
+            <list>
+                <value>写作业</value>
+                <value>玩游戏</value>
+                <!--<ref></ref>-->
+            </list>
+        </property>
+        <!-- Map 注入，map + entry key/value -->
+        <property name="card">
+            <map>
+                <entry key="学号" value="0314"/>
+                <entry key="身份证" value="03140723"/>
+                <!--还有标签属性为-->
+                <!--<entry key-ref="" value-ref=""/>-->
+            </map>
+        </property>
+        <!-- Set 注入，set + value/ref -->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>APEX</value>
+                <!--<ref></ref>-->
+            </set>
+        </property>
+        <!--空值注入-->
+        <property name="money">
+            <null/>
+        </property>
+        <!--空串注入-->
+        <!--<property name="money" value=""/>-->
+        <!-- properties 注入 key = value-->
+        <property name="info">
+            <!-- value 在尖括号外！-->
+            <props>
+                <prop key="学号">0723</prop>
+                <prop key="性别">女</prop>
+                <prop key="姓名">小祈</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

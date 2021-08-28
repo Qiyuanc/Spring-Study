@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="com.qiyuan.service.UserServiceImpl"/>
+    <bean id="beforeLog" class="com.qiyuan.log.BeforeLog"/>
+    <bean id="afterLog" class="com.qiyuan.log.AfterLog"/>
+
+<!--    &lt;!&ndash;使用 Spring 的接口&ndash;&gt;
+    &lt;!&ndash;开启 AOP 配置&ndash;&gt;
+    <aop:config>
+        &lt;!&ndash;声明一个切入点，expression 是一个 execution 表达式，表明切入点在哪&ndash;&gt;
+        &lt;!&ndash; execution 表达式是什么几把玩意后面再说！先用着！这里表明切入点是 UserServiceImpl 下所有方法&ndash;&gt;
+        <aop:pointcut id="logpointcut" expression="execution(* com.qiyuan.service.UserServiceImpl.*(..))"/>
+        &lt;!&ndash;执行环绕增加，增强方法&ndash;&gt;
+        &lt;!&ndash; Spring根据实现的接口 决定通知的连接点&ndash;&gt;
+        &lt;!&ndash; beforelog 实现的是 前置通知 接口，所以连接点在切入点方法执行前&ndash;&gt;
+        <aop:advisor advice-ref="beforeLog" pointcut-ref="logpointcut"/>
+        &lt;!&ndash; afterlog 实现的是 返回通知 接口，所以连接点在切入点方法执行成功后&ndash;&gt;
+        <aop:advisor advice-ref="afterLog" pointcut-ref="logpointcut"/>
+    </aop:config>-->
+
+<!--    &lt;!&ndash;使用自定义类（切面）&ndash;&gt;
+    <bean id="myaop" class="com.qiyuan.aop.MyAOP"/>
+
+    <aop:config>
+        &lt;!&ndash;引用自定义切面&ndash;&gt;
+        <aop:aspect id="myaop" ref="myaop">
+            &lt;!&ndash;设置切入点，和之前相同！&ndash;&gt;
+            <aop:pointcut id="pointcut" expression="execution(* com.qiyuan.service.UserServiceImpl.*(..))"/>
+            &lt;!&ndash;在切入点的方法执行前，执行切面中的 Before 方法&ndash;&gt;
+            <aop:before method="Before" pointcut-ref="pointcut"/>
+            &lt;!&ndash;在切入点的方法执行后，执行切面中的 After 方法&ndash;&gt;
+            <aop:after method="After" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--使用注解-->
+    <!--<bean id="annoAspect" class="com.qiyuan.aop.AnnotationAspect"/>-->
+    <!--开启注解支持-->
+    <aop:aspectj-autoproxy/>
+
+</beans>

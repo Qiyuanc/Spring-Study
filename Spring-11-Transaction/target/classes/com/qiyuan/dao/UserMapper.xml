@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间namespace要绑定一个对应的Dao/Mapper接口，相当于实现它-->
+<mapper namespace="com.qiyuan.dao.UserMapper">
+    <!--select查询语句，使用别名记得配置 typeAlias -->
+    <select id="getUserList" resultType="User">
+        select * from user
+    </select>
+
+    <!--新增用户-->
+    <insert id="addUser" parameterType="User">
+        insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <!--删除用户，故意写错！-->
+    <delete id="deleteUser" parameterType="int">
+        delete form user where id = #{id}
+    </delete>
+
+</mapper>
